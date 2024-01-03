@@ -1,0 +1,196 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+body{
+    background-image: url(https://s1.1zoom.me/big7/871/Cinnamon_Lemons_Closeup_423205.jpg);
+    background-attachment: fixed;
+    background-size: 100%;
+    margin: 0;
+    
+}
+.apresentacao{
+    text-align: center;
+    margin-top: 600px;
+    margin-left: 100px;
+    color: #FF8C00;
+    font-size: 50px;
+    text-shadow: 
+    -1px -1px 0px #FFF, 
+    -1px 1px 0px #FFF,                    
+     1px -1px 0px #FFF,                  
+     1px 0px 0px #FFF;
+}
+img {
+    text-align: center;
+    margin-right: 0px;
+    margin-top: auto;
+    
+}
+.nesse{
+    font-size: 40px;
+    font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    color: white;
+    margin-left: 100px;
+    text-align: center;
+    text-shadow: 
+    -1px -1px 0px black, 
+    -1px 1px 0px black,                    
+     1px -1px 0px black,                  
+     1px 0px 0px black;
+    
+}
+
+.restocorpo{
+    background-color: white;
+    padding: 100px;
+	display: block;
+    /* box-sizing: border-box; */
+}
+
+.noticias{
+    font-size: 50px;
+
+}
+.subtexto{
+	font-size: 25px;
+}
+
+
+.produtos{
+	padding: 60px 0px;
+    /* border: 1px solid red; */
+
+    
+
+}
+
+.produtos p{
+    background-color: white;
+    
+}
+.produtos h4 {
+	font-size: 32px;
+	margin: 40px 40px;
+    background-color: white;
+}
+
+.produtos ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	/* flex-wrap: wrap; */
+    
+}
+
+.produtos li {
+	flex-basis: 50%;
+	margin-right: 1%;
+	margin-bottom: 80px;
+	background-color: white;
+	box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.2);
+	padding: 20px ;
+    padding-left: 0;
+	text-align: center;
+    
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    /* gap: 2; */
+     
+    
+}
+
+.produtos img {
+	width: 300px;
+	height: auto;
+	margin-bottom: 50px;
+    margin-left: 150px;
+   
+}
+
+.button {
+    border-radius: 50px;  
+    display: inline-block;
+    background-color: rgb(82, 211, 43);
+    color: white;
+    border: 2px solid rgb(25, 219, 41);
+    border-radius: 6px;
+    padding: 10px 20px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.2s;
+    cursor: pointer;
+   
+      
+}
+
+
+.titulo-delivery{
+    text-align: center;
+    font-size: 2em;
+    margin: 0 0 1em;
+}
+
+.titulo-delivery:first-letter{
+    font-size: 50px;
+}
+
+.delivery table{
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+}
+
+.delivery th{
+    background-color: aliceblue;
+    color: gray;
+    padding: 30px;
+}
+
+.delivery tr{
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    color: blue;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+.delivery td{
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    color: blue;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+    background-color: gray;
+}
+.delivery th{
+    border: 2px;
+    border-style: solid;
+    border-color: black;
+    color: blue;
+    text-align: center;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+.delivery img{
+    width: 40%;
+    background-color: gray;
+}
+
+.section .delivery{
+    background: url(bg1.jpg) no-repeat;
+    background-size: cover;
+    height: 400px
+}
+

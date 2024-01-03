@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Especiarias da Vovó - Login</title>
+      
+        
+    </head>
+    <body>
+        
+        
+        
+         <div class="button-container">
+        <h1>Bem-vindo à suas informações</h1>
+
+        <!-- Botão para Alterar Cadastro -->
+    <button th:onclick="|window.location.href='/alterar-cadastro'|">Alterar Cadastro</button>
+
+    <!-- Botão para Alterar Endereço -->
+    <button th:onclick="|window.location.href='/alterar-endereco'|">Alterar Endereço</button>
+
+    <!-- Botão para Logout -->
+    <button th:onclick="|window.location.href='/login?logout'|">Logout</button>
+
+
+        <div class="login-container">
+
+            
+    
+            <br> <br>  <a th:href="@{/especiarias/users/inicio}">voltar</a>
+        </div>
+        </div>
+
+    
+
+    </body>
+</html>

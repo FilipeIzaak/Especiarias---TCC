@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Produto</title>
+    <link th:href="@{/css/cadastro.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+</head>
+<body>
+    <h1>Cadastro de Produto</h1>
+    
+    <form th:action="@{/especiarias/gerenciamento/cadastrarproduto}" method="post" enctype="multipart/form-data">
+        <!-- Resto do seu formulário... -->
+
+        <label for="nome">Nome do Produto:</label>
+        <input type="text" id="nome" th:field="${produto.nome}" th:required="required"><br><br>
+
+        <label for="descricao">Descrição:</label>
+        <textarea id="descricao" name="descricao" th:field="${produto.descricao}" rows="4" cols="50"></textarea><br><br>
+
+        <!-- Corrigido o ID para corresponder ao JavaScript -->
+        <label for="foto">Foto:</label>
+        <input  type="file" id="uploadImage" onchange="preViewImg();" name="file" accept="image/*" />
+        
+        <!-- Adicione o elemento img para exibir a pré-visualização -->
+        <img id="foto-preview" src="#" alt="Preview da Imagem" style="max-width: 300px; max-height: 200px;"/><br><br>
+
+        <label for="preco">Preço:</label>
+        <input type="text" id="preco" th:field="${produto.preco}" th:required="required"><br><br>
+
+        <br><br>
+
+        <input type="submit" value="Cadastrar">
+    </form>
+
+    <script>
+        // Script JavaScript para exibir uma pré-visualização da imagem selecionada
+        const imageInput = document.getElementById('foto');
+        const imagePreview = document.getElementById('foto-preview');
+
+        imageInput.addEventListener('change', function () {
+            if (imageInput.files && imageInput.files[0]) {
+                const reader = new FileReader();
+
+                reader.onload = function (e) {
+                    imagePreview.src = e.target.result;
+                };
+
+                reader.readAsDataURL(imageInput.files[0]);
+            }
+        });
+    </script>
+</body>
+</html>

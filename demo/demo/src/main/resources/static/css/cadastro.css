@@ -1,0 +1,85 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Outfit', sans-serif;
+}
+
+
+    
+
+.container{
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 6%;
+}
+
+
+
+.primeiroh1{
+    text-align: left;
+    margin-bottom: 7px;
+    color: rgb(251, 255, 250);
+    font-size: 60px;
+}
+
+
+.legenda{
+    text-align: left;
+    color: rgb(27, 37, 129);
+    font-size: 40px;
+}
+
+form .input-single{
+    position: relative;
+    margin: 30px 0;
+}
+
+form .input-single label{
+    position: absolute;
+    left: 0;
+    bottom: 5px;
+    cursor: text;
+    transition: all 0.5s;
+    color: #808080;
+    
+}
+
+form .input-single .input{
+    width: 100%;
+    border: 0;
+    border-bottom: 2px solid #808080;
+    padding: 5px;
+    outline: 0;
+    font-size: 16px;
+}
+
+form .input-single .input:focus{
+    border-bottom: 2px solid #1ca709;;
+}
+
+form .input-single .input:focus ~ label,
+form .input-single .input:valid ~ label{
+    transform: translateY(-20px);
+    font-size: 12px;
+    color: #2D5966;
+}
+
+.btn{
+    width: 100%;
+    text-align: center;
+}
+
+form input[type=submit]{
+    padding: 10px 80px;
+    border: 0;
+    border-radius: 10px;
+    background-color: #048b04;;
+    color: #fff;
+    font-size: 14pt;
+    cursor: pointer;
+}
+
