@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}" />
+<link rel="stylesheet" th:href="@{/js/produtos.js}" />
+   <link rel="stylesheet" th:href="@{/css/produtos.css}" />
+  
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+
+<title>Especiarias Da Vovó - Produtos</title>
+
+<style>
+        .card-container {
+            display: flex;
+            gap: 20px; /* Espaço entre os cards */
+        }
+
+        .card {
+            width: 300px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .card-content {
+            padding: 16px;
+        }
+
+        .card h3 {
+            margin-top: 0;
+        }
+
+        .card p {
+            margin-bottom: 10px;
+        }
+
+        .card button {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .card button:hover {
+            background-color: #45a049;
+        }
+        
+        </style>
+</head>
+<body> 
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+        </label> 
+        <img src="https://uploaddeimagens.com.br/images/004/572/943/full/MicrosoftTeams-image_%282%29.png?1691696928" alt="" width="350"> 
+        <ul class="active"> 
+           <li><a th:href="@{/especiarias/users/inicio}">  Página inicial </a></li>
+              		<li><a th:href="@{/especiarias/users/pagproduto}">  Produtos </a></li>
+              		<li><a th:href="@{/especiarias/users/sobrenos}">  Sobre nós </a></li>    
+              		<li><a th:href="@{/login?logout}">  Sair </a></li>
+        </ul>
+    </nav>
+    
+ <div class="container py-5">
+<br>
+<br>
+<br>
+
+ 
+<center>
+        <div class="col-12 d-flex align-items-center justify-content-center">
+            <h1>P R O D U T O S</h1>
+        </div>
+ </center>
+<br>
+<br>
+<br>
+
+  <!-- Colocar tudo dentro de uma única lina -->
+
+ 
+
+  <!-- <div class="row"> -->
+
+ 
+
+  <!-- <div class="row row-cols-1 row-cols-md-3 g-4 py-5"> -->
+
+ 
+<div id="produtos-container">
+        <!-- Os cards serão adicionados aqui -->
+    </div>
+  </div>
+    
+
+    <section class="container normal-section">
+      <h2 class="carrinho">Carrinho de Compra</h2>
+  
+  <form th:action="@{/finalizapedido}" th:object="${carrinho}" method="post">
+      <table class="cart-table">
+          <thead>
+              <tr>
+                  <th class="table-head-item first-col">Item</th>
+                  <th class="table-head-item second-col">Preço</th>
+                  <th class="table-head-item third-col">Quantidade</th>
+              </tr>
+          </thead>
+  
+          <tbody>
+             
+          </tbody>
+  </form>
+          <tfoot>
+              <tr>
+                  <td colspan="3" class="cart-total-container">
+                      <strong>Total</strong>
+                      <!-- Supondo que você tenha uma variável 'total' no seu modelo -->
+                      <span th:text="${total}"></span>
+                  </td>
+              </tr>
+          </tfoot>
+      </table>
+  </section>
+  
+  <button type="button" id="cart_button" class="purchase-button">Finalizar Compra</button>
+  
+  
+  </div>
+  </div>
+  </div>
+  
+  
+  <script src="https://code.jquery.com/jquery.min.js"></script>
+  
+<script async th:href="@{/js/produtos.js}"></script>
+
+<script>
+// Variável global para armazenar os itens do carrinho
+var carrinhoItens = [];
+
+// Função para carregar e exibir os produtos
+function carregarProdutos() {
+    // Substitua pela URL correta da sua API
+    var apiUrl = '/especiarias/api/produtos';
+
+    fetch(apiUrl)
+        .then(response => response.json())
+        .then(produtos => {
+            var container = document.getElementById('produtos-container');
+
+            produtos.forEach(function (produto) {
+                var card = document.createElement('div');
+                card.className = 'card';
+                card.innerHTML = `
+
+        
+       
+    </div>
+   <div class="products-container">
+              <div class="movie-product">          
+                <div class="card h-100">          
+                  
+                  <img src="data:image/jpeg;base64,${produto.foto}" alt="Product Image">
+                  
+                  <div class="card-body">
+                    
+                    <strong class="produto-titulo">${produto.nome}</strong>
+                    
+                    <p class="card-text">${produto.descricao}.
+                    </p>
+                    <div class="card-price">R$  ${produto.preco}</div>
+                <button type="button" class="button-hover-background addToCartButton">Adicionar ao Carrinho</button>
+            
+                  </div>
+                `;
+
+                container.appendChild(card);
+
+                // Adicionando um ouvinte de evento para o novo botão "Adicionar"
+                card.querySelector('.addToCartButton').addEventListener('click', function () {
+                    addProdutoToCard(produto);
+                });
+            });
+        })
+        .catch(error => {
+            console.error('Erro ao recuperar os produtos do backend:', error);
+        });
+}
+
+// Função para adicionar produtos ao carrinho
+function addProdutoToCard(produto) {
+    // Verificar se o produto já está no carrinho
+    const produtoNoCarrinho = carrinhoItens.find(item => item.nome === produto.nome);
+
+    if (produtoNoCarrinho) {
+        // Se o produto já estiver no carrinho, aumente a quantidade
+        produtoNoCarrinho.quantidade++;
+    } else {
+        // Caso contrário, adicione o produto ao carrinho
+        carrinhoItens.push({
+        	id: produto.id,
+        	nome: produto.nome,
+            preco: produto.preco,
+            desconto: 0,
+            quantidade: 1
+        });
+    }
+
+    // Atualizar a exibição do carrinho
+    updateCartDisplay();
+    // Atualizar o total
+    updateTotal();
+}
+
+// Função para remover produtos do carrinho
+function removeProdutoFromCard(produtoNome) {
+    // Encontrar o índice do produto no carrinho
+    const index = carrinhoItens.findIndex(item => item.nome === produtoNome);
+
+    // Remover o produto do carrinho
+    if (index !== -1) {
+        carrinhoItens.splice(index, 1);
+    }
+
+    // Atualizar a exibição do carrinho
+    updateCartDisplay();
+    // Atualizar o total
+    updateTotal();
+}
+
+// Função para atualizar a quantidade de produtos no carrinho
+function updateQuantidade(produtoNome, novaQuantidade) {
+    // Encontrar o produto no carrinho
+    const produtoNoCarrinho = carrinhoItens.find(item => item.nome === produtoNome);
+
+    // Atualizar a quantidade
+    if (produtoNoCarrinho) {
+        produtoNoCarrinho.quantidade = novaQuantidade;
+    }
+
+    // Atualizar a exibição do carrinho
+    updateCartDisplay();
+    // Atualizar o total
+    updateTotal();
+}
+
+// Função para atualizar a exibição do carrinho
+function updateCartDisplay() {
+    // Obter a tabela do carrinho
+    const tableBody = document.querySelector(".cart-table tbody");
+
+    // Limpar o conteúdo da tabela
+    tableBody.innerHTML = "";
+
+    // Preencher a tabela com os itens do carrinho
+    for (var i = 0; i < carrinhoItens.length; i++) {
+        const item = carrinhoItens[i];
+
+        // Criar uma nova linha na tabela
+        let newCartProduct = document.createElement("tr");
+        newCartProduct.classList.add("cart-product");
+
+        // Preencher a linha com os dados do item do carrinho
+        newCartProduct.innerHTML = `
+            <td class="product-identification">
+                <strong class="cart-product-title">${item.nome}</strong>
+                <button type="button" class="remove-product-button">Remover</button>
+            </td>
+            <td>
+                <span class="cart-product-price">${item.preco}</span>
+            </td>
+            <td>
+                <input type="number" value="${item.quantidade}" min="1" class="product-qtd-input">
+            </td>
+        `;
+
+        // Adicionar a linha à tabela do carrinho
+        tableBody.appendChild(newCartProduct);
+
+        // Ativado botão de excluir novamente
+        newCartProduct.querySelector(".remove-product-button").addEventListener("click", function () {
+            removeProdutoFromCard(item.nome);
+        });
+
+        // Adicionando um ouvinte de evento para a alteração de quantidade
+        newCartProduct.querySelector(".product-qtd-input").addEventListener("change", function (event) {
+            const novaQuantidade = parseInt(event.target.value, 10);
+            updateQuantidade(item.nome, novaQuantidade);
+        });
+    }
+}
+
+// Função para atualizar o total
+// Função para atualizar o total
+function updateTotal() {
+    // Atualizar o Total
+    // Obter valor de cada produto
+    let totalAmount = 0;
+
+    for (var i = 0; i < carrinhoItens.length; i++) {
+        totalAmount += carrinhoItens[i].preco * carrinhoItens[i].quantidade;
+    }
+
+    document.querySelector(".cart-total-container span").innerText =
+        "R$ " + totalAmount.toFixed(2).replace(".", ",");
+}
+
+// Chame a função para carregar os produtos assim que a página carregar
+document.addEventListener('DOMContentLoaded', function () {
+    carregarProdutos();
+});
+
+</script>
+
+
+  <script>
+
+
+$(document).ready(function() {
+	//jQuery(function($) {
+	
+	$('#cart_button').on('click', function(e) {
+	
+		 data = JSON.stringify(carrinhoItens);
+		 
+		// console.log(data);
+		 
+		$.ajax({
+			url : 'http://localhost:8080/especiarias/users/pagproduto',
+			//  url: 'http://localhost:8080/comercio/addItem?idProduto=1&action=load',
+
+			  headers: {
+			
+			       'Content-Type': 'application/json'
+			 },
+			method : 'POST',
+			dataType : 'json',
+			data : data,
+			success : function(carrinho) {
+				console.log('Carrinho criado: ' + carrinho.id);
+				
+				$(location).prop('href', 'http://localhost:8080/especiarias/finalizapedido')
+				
+				//location.reload();
+				
+
+			},
+			error : function(e) {
+				console.log(e);
+				
+			}
+		});
+		
+		  
+	});
+
+});
+	
+    </script>
+
+</body>
+</html>

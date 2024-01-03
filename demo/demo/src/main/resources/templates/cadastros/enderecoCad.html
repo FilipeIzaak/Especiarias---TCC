@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link th:href="@{/css/cadastro.css}" rel="stylesheet">
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+
+
+    <title> Especiarias da Vovó - Cadastro endereço</title>
+</head>
+<body>
+
+    <nav>
+        <input type="checkbox" id="check">
+        <label for="check" class="checkbtn">
+          <i class="fas fa-bars"></i>
+        </label>
+        <img src="https://uploaddeimagens.com.br/images/004/572/943/full/MicrosoftTeams-image_%282%29.png?1691696928" alt="" width="350"> </label>
+        <ul  class="active" > 
+            <li><a th:href="@{/especiarias/users/inicio}">  Página inicial </a></li>
+              		<li><a th:href="@{/especiarias/users/pagproduto}">  Produtos </a></li>
+              		<li><a th:href="@{/especiarias/users/sobrenos}">  Sobre nós </a></li>    
+              		<li><a th:href="@{/especiarias/users/login}">  Login </a></li> 
+        </ul>
+      </nav>
+    
+
+    <section class="form-container">
+        <div class="container">
+            <form th:action="@{/especiarias/cadastrarendereco}" method="post" th:object="${endereco}"> 
+                <h1 class='primeiroh1' > Cadastre seu endereço!</h1>
+                <input type="hidden" th:field="*{id}">
+ <br>
+                <p class='legenda' > Preencha o seu endereço nos campos abaixo! </p>
+                <div class="input-single">
+                    <input class="input" type="text" id="logradouro" name="logradouro" th:field="${endereco.logradouro}"required autocomplete="off">
+                    <label for="nome">Logradouro (rua, avenida)</label>
+                </div>
+                <div class="input-single">
+                    <input class="input" type="text" id="numero" name="numero" th:field="${endereco.numero}"required autocomplete="off">
+                    <label for="nome">Número de sua casa </label>
+                </div>
+                 <div class="input-single">
+                    <input class="input" type="text" id="cep" name="cep" th:field="${endereco.cep}"required autocomplete="off">
+                    <label for="nome">Cep</label>
+                </div>
+                <div class="input-single">
+                    <input class="input" type="text" id="bairro" name="bairro" th:field="${endereco.bairro}" required autocomplete="on">
+                    <label for="text">Bairro</label>
+                </div>
+                <div class="input-single">
+                    <input class="input" type="text" id="cidade" name="cidade"th:field="${endereco.cidade}" required autocomplete="off">
+                    <label for="senha">Cidade</label>
+                </div>
+                <div class="input-single">
+                    <input class="input" type="text" id="estado" name="estado" th:field="${endereco.estado}"required autocomplete="off">
+                    <label for="text">Estado</label>
+                </div>
+                <div class="input-single">
+                    <input class="input" type="text"  max= "2" id="uf" name="uf"th:field="${endereco.uf}" required autocomplete="off">
+                    <label for="text">UF</label>
+                </div>
+                <div class="btn" >
+                    <input type="submit" value="Enviar" > 
+                </div>
+            </form>
+        </div><!--container-->
+    </section>
+
+
+</body>
+</html>

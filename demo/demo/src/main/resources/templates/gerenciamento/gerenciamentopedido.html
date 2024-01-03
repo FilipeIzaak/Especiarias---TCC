@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento pedidos</title>
+    <link th:href="@{/css/navbar.css}" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+ <nav>
+        <input type="checkbox" id="check">
+          <label for="check" class="checkbtn">
+            <i class="fas fa-bars"></i>
+          </label> <img src="https://uploaddeimagens.com.br/images/004/572/943/full/MicrosoftTeams-image_%282%29.png?1691696928" alt="" width="350"> </label>
+            <ul class="active" > 
+              <li><a th:href="@{/especiarias/gerenciamento/user}">  Usuário </a></li>
+              <li><a th:href="@{/especiarias/gerenciamento/produto}">  Produto </a></li>
+              <li><a th:href="@{/especiarias/gerenciamento/endereco}">  Endereço </a></li>             
+              <li><a th:href="@{/especiarias/gerenciamento/pedido}">  Pedido </a></li>
+            </ul>
+    </nav>
+    <h1>Gerenciamento dos pedidos</h1>
+
+ <div class="bd-example">
+    <table class="table table-sm table-striped table-hover">
+        <thead>
+   
+        <tr>
+            <th>ID</th>
+            <th>Data da Compra</th>
+             <th>Status</th>
+             <th>Valor</th>
+             <th>Detalhes</th>
+            
+            
+        </tr>
+</thead>
+        <tbody>
+        <!-- Exibição dos detalhes do endereco -->
+        <tr th:each="carrinho : ${carrinhos}">
+            <td>
+                <span th:text="${carrinho.id}"></span>
+            </td>
+            <td>
+               <span th:text="${#temporals.format(carrinho.dataCompra, 'dd/MM/yyyy HH:mm')}"  ></span> 
+            </td>
+        
+            <td>
+                <span th:text="${carrinho.statusCarrinho}"></span>
+            </td>
+            <td>
+                <span th:text="${#numbers.formatCurrency(carrinho.valor)}"></span>
+            </td>
+            <td> <a th:href="@{'/especiarias/gerenciamento/endereco/' + ${endereco.id}}">Detalhe</a></td>
+      
+        </tr>
+         </tbody>
+  
+
+    </table>
+   
+
+
+</body>
+</html>

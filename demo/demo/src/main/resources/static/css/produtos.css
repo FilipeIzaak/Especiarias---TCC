@@ -1,0 +1,187 @@
+ /* Reset CSS */
+ * {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+div#produtos-container {
+    display: flex;
+            flex-wrap: wrap; /* Garante que os itens vão para a linha seguinte quando não há espaço suficiente */
+            justify-content: space-around; /* Alinha os itens ao redor, distribuindo o espaço disponível */
+            margin: 0 auto; /* Centraliza o contêiner na tela */
+            max-width: 800px; 
+    
+}
+ .main-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh; /* Torna o contêiner principal pelo menos 100% da altura da tela */
+        }
+
+/* Estilo do Card de Produto */
+.card {
+  width: 200px;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  margin: 10px;
+  overflow: hidden;
+  transition: transform 0.3s;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card img {
+  width: 100%;
+  height: auto;
+}
+
+.card-body {
+  padding: 10px;
+  text-align: center;
+}
+
+.card-title {
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.card-description {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 10px;
+}
+
+.card-price {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ff5722;
+}
+
+.add-to-cart-button {
+  background-color: #ff5722;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Estilo do Contêiner de Produtos */
+.products-container {
+  display: flex;
+  flex-wrap: wrap; /* Garante que os itens vão para a linha seguinte quando não há espaço suficiente */
+  justify-content: space-around; /* Alinha os itens ao redor, distribuindo o espaço disponível */
+}
+    
+ /* ====================C A R R I N H O======================== */
+
+.carrinho {
+  font-size: 32px;
+  text-align: center;
+  text-transform: uppercase;
+  margin: 30px 0;
+}
+
+/* Tamanho total da tabela */
+.cart-table {
+  width: 100%;
+
+  /* As linhas estão separadas com espaço entre elas
+     Então com collapse serão juntadas */
+  border-collapse: collapse;
+}
+
+.table-head-item {
+  text-align: start;
+  border-bottom: 1px solid gray;
+  padding-bottom: 6px;
+  text-transform: uppercase;
+}
+
+.second-col,
+.third-col {
+  /* Espaços iguais */
+  width: 26%;
+}
+
+/* Selecionar todos os td dentro de cart-product */
+.cart-product td {
+  padding: 8px 0;
+}
+
+/* Deixar a imagem e nome na mesma linha e centralizar
+   vertical*/
+.product-identification {
+  display: flex;
+  align-items: center;
+}
+
+.cart-product-image {
+  width: 90px;
+  height: auto;
+}
+
+.cart-product-title {
+  margin-left: 16px;
+  font-size: 18px;
+}
+
+.product-qtd-input {
+  width: 48px;
+  height: 34px;
+  border-radius: 6px;
+  border: 2px solid #00f;
+  text-align: center;
+  background-color: #eee;
+}
+
+.remove-product-button {
+  margin-left: 12px;
+  background-color: #f00;
+  color: #fff;
+  padding: 10px 8px;
+  border: 0;
+  border-radius: 6px;
+
+  transition: 0.2s;
+}
+
+.remove-product-button:hover {
+  filter: brightness(0.8);
+}
+
+.cart-total-container {
+  /* border-top: 1px solid gray; */
+  border-top: 3px dashed rgb(0, 255, 115);
+  text-align: end;
+  padding: 6px 16px 0 0;
+  font-size: 18px;
+}
+
+.cart-total-container strong {
+  margin-right: 12px;
+}
+
+.purchase-button {
+  display: flex;
+  margin: 24px auto 0;
+  background-color: blue;
+  color: #fff;
+  border: 0;
+  border-radius: 6px;
+  padding: 16px 20px;
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: bold;
+
+  transition: 0.2s;
+}
+
+.purchase-button:hover {
+  filter: brightness(0.8);
+}

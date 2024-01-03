@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+    <html>
+    <head>
+        <title>Especiarias da Vovó - Login</title>
+        <link rel="stylesheet" type="text/css" href="/css/login.css">
+        <link rel="icon" type="image/x-icon" href="/produtos/icon-novo3.png">
+        <link rel="stylesheet" href="/css/paginainicial.css">
+        <link rel="stylesheet" href="/css/cadastro.css">
+        <link rel="stylesheet" href="/css/forms.css">
+        <link rel="stylesheet" href="/css/navbar.css">
+    </head>
+    <body>
+        
+        
+        <nav>
+            <input type="checkbox" id="check">
+                <label for="check" class="checkbtn">
+                    <i class="fas fa-bars"></i>
+                </label> <img src="https://uploaddeimagens.com.br/images/004/572/943/full/MicrosoftTeams-image_%282%29.png?1691696928" class="logo" alt="" width="370"> </label>
+          
+        </nav>
+        
+        <div class="login-container">
+            <h1>Login</h1>
+            <form th:action="@{/especiarias/login}" method="post" >
+                <input type="text" placeholder="Insira o Email" id="*${email}" name="username" />
+                <input type="password" placeholder="Senha" id="*${password}" name="password"  />
+    
+                <input type="submit" value="Login" />
+            </form>
+    
+            <br> <br> Caso não possua, <a th:href="@{/especiarias/cadastraruser}">Cadastre-se</a>
+        </div>
+
+    
+
+    </body>
+</html>

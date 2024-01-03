@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" th:href="@{/css/paginainicial.css}">
+    <link rel="stylesheet" th:href="@{/css/cadastro.css}">
+    <link rel="stylesheet" th:href="@{/css/forms.css}">
+    <link rel="stylesheet" th:href="@{/css/navbar.css}">>
+    <title>Pagamento via Pix</title>
+    
+    <style>
+        .body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+        .container {
+            width: 300px;
+            margin: 0 auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            background-color: #f5f5f5;
+            text-align: center
+        }
+        #qr-code {
+            width: 200px;
+            height: 200px;
+            margin: 20px auto;
+            border: 2px solid #333;
+        }
+        .btn {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    
+   
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    <br/>
+    
+    <div class="container">
+        <h1>Realizar Pagamento via Pix</h1>
+        <p>Escaneie o QR Code ou copie a chave Pix para fazer o pagamento.</p>
+
+        <img id="qr-code" th:src="@{'/img/Qrlogo.png'}" alt="Sua Imagem">
+
+        
+        <p id="chavePix">Chave Pix: <span id="chavePixValor"></span></p>
+
+        
+         <tr>
+            <td th:text="${total}"></td>
+        </tr>
+
+
+        <button class="btn" id="realizarPagamento" th:href="@{/especiarias/users/inicio}">Realizar Pagamento</button>
+    </div>
+
+    <script>
+        window.onload = function() {
+            const urlParams = new URLSearchParams(window.location.search);
+            const chavePix = urlParams.get('chavePix');
+            const valor = urlParams.get('valor');
+
+            if (chavePix && valor) {
+                document.getElementById('chavePixValor').textContent = chavePix;
+                document.getElementById('valorValor').textContent = `R$ ${valor}`;
+                generateQRCode(chavePix, valor);
+            }
+        }
+
+        function generateQRCode(chavePix, valor) {
+            // Aqui você pode adicionar a lógica para gerar um QR Code real com base na chave Pix e valor.
+            // Como isso envolve bibliotecas de terceiros, não é possível implementar completamente aqui.
+        }
+        
+       document.getElementById('realizarPagamento').addEventListener('click', function() {
+    alert("Pagamento realizado com sucesso! Volte para a página inicial para fazer mais compras");
+    window.location.href = '/especiarias/users/inicio';
+});
+
+    </script>
+    
+
+</body>
+</html>

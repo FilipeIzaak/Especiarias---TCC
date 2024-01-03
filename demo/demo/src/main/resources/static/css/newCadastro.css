@@ -1,0 +1,15 @@
+.primeiroh1{
+    text-shadow: 
+    -1px -1px 3px black, 
+    -1px 1px 3px black,                    
+     1px -1px 3px black,                  
+     1px 0px 3px black;
+}
+
+.legenda{
+    text-shadow: 
+    -1px -1px 0px #FFF, 
+    -1px 1px 0px #FFF,                    
+     1px -1px 0px #FFF,                  
+     1px 0px 0px #FFF;
+}
